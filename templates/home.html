@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <form action="/" method="post">
+        <input type="text" name="word" placeholder="word" id="word">
+
+        <br>
+    Source:
+        <select name="source_lang" id="source_lang">
+            <option value="{{ data["source_lang"]['key'] }}">{{ data["source_lang"]['value'] }}</option>
+            {% for item in data.langs %}
+                {% if item != data["source_lang"]['key'] %}
+                    <option value="{{ item }}">{{ data.langs[item] }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+
+    <br>
+    Target:
+        <select name="target_lang" id="target_lang">
+            <option value="{{ data["target_lang"]['key'] }}">{{ data["target_lang"]['value'] }}</option>
+            {% for item in data.langs %}
+                {% if item != data["target_lang"]['key'] %}
+                    <option value="{{ item }}">{{ data.langs[item] }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+<br>
+        <input type="submit" name="submit" value="submit">
+    </form>
+
+    {% if data['word'] %}
+        <p>{{  data['word'] }}</p>
+    {% endif %}
+</head>
+<body>
+
+</body>
+</html>
